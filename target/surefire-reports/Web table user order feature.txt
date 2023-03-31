@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: Web table user order feature
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 82.493 s <<< FAILURE! - in Web table user order feature
+Web table user order feature.User should be able to place order and order seen in web table #5  Time elapsed: 6.053 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<Barbara[ fail]> but was:<Barbara[]>
+
+Web table user order feature.User should be able to place order and order seen in web table #8  Time elapsed: 5.529 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<Einstein[ fail]> but was:<Einstein[]>
+
