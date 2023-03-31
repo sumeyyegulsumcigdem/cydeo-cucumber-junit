@@ -1,8 +1,13 @@
 package com.cydeo.utilities;
 
+import org.bouncycastle.pqc.crypto.newhope.NHOtherInfoGenerator;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class BrowserUtils {
@@ -56,6 +61,55 @@ public class BrowserUtils {
     //This method accepts a String "expectedTitle" and Asserts if it is true
     public static void verifyTitle(String expectedTitle){
         Assert.assertEquals(Driver.getDriver().getTitle(), expectedTitle);
+    }
+
+    //This method will verify if the current URL contains expected value.
+    public static void verifyURLContains(String expectedInTitle){
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedInTitle));
+    }
+
+
+    /**
+     * This method will accept a dropdown as a WebElement and return
+     * all of the options' text in a List of String.
+     * @param dropdownElement
+     * @return List</String> actualOptionsAsString
+     */
+
+    public static List<String> dropdownOptionAsString(WebElement dropdownElement){
+
+        Select select = new Select(dropdownElement);
+
+        //List of all ACTUAL month <options> as a web element
+        List<WebElement> actualOptionsAsWebElement = select.getOptions();
+
+        //List of all ACTUAL month <options> as a string
+        List<String> actualOptionsAsString = new ArrayList<>();
+
+        for (WebElement each : actualOptionsAsWebElement) {
+            actualOptionsAsString.add(each.getText());
+        }
+
+        return actualOptionsAsString;
+
+    }
+
+    /**
+     * This method will accept a group radio buttons as a list of WebElement
+     * It will loop through the list and click to the radio button with provided attributeValue
+     * @param radioButtons
+     * @param attributeValue
+     */
+    public static void clickRadioButton(List<WebElement> radioButtons, String attributeValue){
+
+        for (WebElement each : radioButtons) {
+
+            if (each.getAttribute("value").equals(attributeValue)){
+                each.click();
+            }
+
+        }
+
     }
 
 }
